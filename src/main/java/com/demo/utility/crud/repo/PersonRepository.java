@@ -12,5 +12,5 @@ import com.demo.model.Person;
  *
  */
 public interface PersonRepository extends CrudRepository<Person, Long> {
-
+	Person findByFirstName(String firstName);
 }

@@ -27,7 +27,7 @@ System.out.println("IN JSP :: Username ::"+session.getAttribute("UserName"));
 <%
 //} else {
 	%>
-	<h1 align="center">Navigating back is restricted for security Reasons</h1>
+	<!-- <h1 align="center">Navigating back is restricted for security Reasons</h1> -->
 	<%
 //}
 %>

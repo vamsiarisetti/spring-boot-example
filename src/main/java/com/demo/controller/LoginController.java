@@ -1,7 +1,5 @@
 package com.demo.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.demo.model.Person;
 import com.demo.model.UserInfo;
 import com.demo.utility.LoginUtils;
-import com.demo.utility.crud.DTOService;
+import com.demo.utility.crud.repo.PersonRepository;
+import com.demo.utility.crud.repo.UserInfoRepository;
 
 @Controller
 public class LoginController {
@@ -28,7 +27,13 @@ public class LoginController {
 	private static Logger logger = LogManager.getLogger(LoginController.class);
 
 	@Autowired
-	private DTOService dtoSrv;
+	private UserInfoRepository urepo;
+	
+	@Autowired
+	private PersonRepository prepo;
+
+	//@Autowired
+	//private DTOService dtoSrv;
 
 	@GetMapping("/")
 	public String index() {
@@ -37,13 +42,13 @@ public class LoginController {
 
 	@PostMapping("/login")
 	public String sayHello(@RequestParam("name") String name, Model model, HttpSession appsesssion) {
-		logger.info(">>>"+name);
+
+		UserInfo uInfoByName = urepo.findByUsername(name);
 		
-		UserInfo findByNameUserInfo = dtoSrv.findByName(name);
-		if (findByNameUserInfo != null) {
-			logger.info("User ::"+findByNameUserInfo.getUsername());
-			model.addAttribute("name", findByNameUserInfo.getUsername());
-			appsesssion.setAttribute("UserName", findByNameUserInfo.getUsername());
+		if (uInfoByName != null) {
+			logger.info("While login :: UserName ::"+uInfoByName.getUsername());
+			model.addAttribute("name", uInfoByName.getUsername());
+			appsesssion.setAttribute("UserName", uInfoByName.getUsername());
 			return "home";
 		} else {
 			model.addAttribute("errorMsg", name+" Do not Exist in Persistence");
@@ -100,8 +105,11 @@ public class LoginController {
         		person.setEmail(email);
         		person.setUserInfo(uInfo);
 
-        		dtoSrv.createUserInfo(uInfo);
-        		dtoSrv.createPerson(person);
+        		//dtoSrv.createUserInfo(uInfo);
+        		//dtoSrv.createPerson(person);
+        		
+        		urepo.save(uInfo);
+        		prepo.save(person);
 
         		if (uInfo != null) {
         			appsession.setAttribute("UserName", uInfo.getUsername());
