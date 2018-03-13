@@ -1,0 +1,77 @@
+i {
+	padding-left: 12px;
+}
+
+a {
+	color: aliceblue;
+	margin: 30px;
+}
+
+body {
+	background-color: darkgray;
+}
+
+.loginform {
+	width: 400px;
+	border-radius: 10px;
+	margin: auto;
+	position: relative;
+	background-color: #001f3f;
+	/* new */
+	padding-left: 120px;
+	padding-right: 120px;
+	padding: 90px;
+	top: 65px;
+	padding-top: 21px;
+}
+
+h1 {
+	text-align: center;
+	color: aliceblue;
+}
+
+input[type=button] {
+	width: 82px;
+	font-size: 18px;
+	cursor: pointer;
+	border-radius: 36px;
+	margin: 20px 235px;
+	color: darkslategray;
+}
+
+input {
+	padding: 10px;
+	padding-right: 13px;
+	border-radius: 4px;
+	padding: 10px 26px;
+	margin: 12px 58px;
+}
+
+input[type=submit] {
+	margin-left: 209px;
+	cursor: pointer;
+	margin: 20px 235px;
+}
+
+/** Tooltip Text **/
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: aliceblue;
+	color: #001f3f;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
