@@ -1,0 +1,7 @@
+url:We will get our weebsite launched soon
+name:BUNTY
+email:taurus.vamsi@gmail.com
+gender:male
+botmaster:Vamsi Arisetti
+organization: Demo Org
+version:0.0.1
