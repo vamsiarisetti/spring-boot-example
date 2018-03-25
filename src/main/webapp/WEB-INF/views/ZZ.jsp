@@ -14,11 +14,9 @@
 
 <script type="text/javascript">
 	function sendMsg() {
-		//alert("sdasdasd");
 		var txt = document.getElementById("idTxt").value;
 		document.getElementById("getMsg").innerHTML = txt;
 		document.getElementById("idTxt").innerHTML = "";
-		//alert("OnExit");
 	}
 </script>
 </head>
