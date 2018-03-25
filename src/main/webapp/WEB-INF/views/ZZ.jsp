@@ -11,16 +11,14 @@
 <script src="/resources/js/bot/jquery.ui.chatbox.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/bot/jquery.ui.chatbox.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-
 	function sendMsg() {
+		//alert("sdasdasd");
 		var txt = document.getElementById("idTxt").value;
 		document.getElementById("getMsg").innerHTML = txt;
-//		"/getBotResponse"		
-		// give the response from AIML
 		document.getElementById("idTxt").innerHTML = "";
+		//alert("OnExit");
 	}
 </script>
 </head>
@@ -72,7 +70,7 @@
 				<div class="text-bar">
 					<input type="text" placeholder="Write messege" id="idTxt"><a
 						href="#"><i class="fa fa-arrow-right" aria-hidden="true"
-						id="idSend" onclick="sendMsg();"></a>
+						onclick="return sendMsg();"></i></a>
 				</div>
 			</div>
 		</div>
