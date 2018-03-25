@@ -2,7 +2,7 @@
 <aiml>
 <!-- File: learnf.aiml -->
 <!-- Author: Vamsi Arisetti -->
-<!-- Last modified: March 18, 2018 -->
+<!-- Last modified: March 25, 2018 -->
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.1 chat bot knowledge base. -->
 <!--  -->
@@ -20,5 +20,8 @@
 </category>
 <category><pattern>WHAT IS MY NICK NAME</pattern>
 <template>bunty</template>
+</category>
+<category><pattern>MY NAMEWHAT S NAME</pattern>
+<template>my name IS hat</template>
 </category>
 </aiml>

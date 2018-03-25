@@ -89,19 +89,19 @@ h3 {
 </style>
 <script type="text/javascript">
 var chkPsdPrev = false;
+var isUserExists = false;
+var isPwdSame = false;
 function isUserExistsFn() {
 	var username = $('#idUsrNm').val();
-	//alert("UserName >>"+username);
 	$.ajax({
 		type: 'GET',
 		dataType: "json",
-		url: "http://localhost:8080/Spring4MVCHelloWorldNoXMLDemo/UserExists/"+username,
+		url: "http://localhost:8080/UserExists/"+username,
 		success: function(data) {
-			//alert(">>>>"+data);
 			isUserExists = data;
 			if(data != true) {
-				// dialog Box
 				getDialog("User doesnot exists", "User");
+				isUserExists = false;
 				return false;
 			}
 			return data;
@@ -111,17 +111,16 @@ function isUserExistsFn() {
 function fnChkPwdPrev() {
 	var password = $('#idPwd').val();
 	var userNm = $('#idUsrNm').val();
-	//alert("password >>"+password+"::userNm::"+userNm);
 	$.ajax({
 		type: 'GET',
 		datatype: 'json',
-		url: "http://localhost:8080/Spring4MVCHelloWorldNoXMLDemo/chkPwdisPrev/"+userNm+"/"+password,
+		url: "http://localhost:8080/chkPwdisPrev/"+userNm+"/"+password,
 		success: function(data) {
-			//alert(">>>>"+data);
 			chkPsdPrev = data;
 			if(data == true) {
 				// dialog Box
 				getDialog("Password is same as previous password", "Password");
+				chkPsdPrev = false;
 				return false;
 			}
 			return data;
@@ -132,11 +131,12 @@ function fnChkPwdRePwd() {
 	var password = $('#idPwd').val();
 	var resetPassword = $('#idRePwd').val();
 	if (password != resetPassword) {
-		//alert("password : "+password+":: RESPASSWD ::"+resetPassword);
 		// dialog Box
 		getDialog("Password and Reset Password are not identical","Reset Password");
+		isPwdSame = false;
 		return false;
 	}
+	isPwdSame = true;
 	return true;
 }
 // Function for Dialog box with OK Button and dynamic text
@@ -170,6 +170,20 @@ function fnSubmit() {
 		// dialog Box
 		getDialog("Reset Password cannot be Empty", "Reset Password");
 		return false;
+	} if (chkPsdPrev == false || isUserExists == false || isPwdSame == false) {
+		if (chkPsdPrev == false) {
+			console.log("Same as prev. password :: "+chkPsdPrev);
+			getDialog("Password is same as previous password", "Password");
+			return false;
+		} else if (isUserExists == false) {
+			console.log("user exists ??? :: "+isUserExists);
+			getDialog("User doesnot exists", "User");
+			return false;
+		} else if (isPwdSame == false) {
+			console.log("password is not identical as reset password :: "+isPwdSame);
+			getDialog("Password and Reset Password are not identical","Reset Password");
+			return false;
+		}
 	}
 }
 </script>

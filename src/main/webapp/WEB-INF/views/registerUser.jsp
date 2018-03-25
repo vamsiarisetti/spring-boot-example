@@ -136,7 +136,7 @@ function isUserExistsFn() {
 	$.ajax({
 		type: 'GET',
 		dataType: "json",
-		url: "http://localhost:8080/Spring4MVCHelloWorldNoXMLDemo/UserExists/"+username,
+		url: "http://localhost:8080/UserExists/"+username,
 		success: function(data) {
 			//console.log('success',data);
 			isUserExists = data;

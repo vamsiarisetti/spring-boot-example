@@ -7,10 +7,16 @@ import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.demo.utility.crud.repo.UserInfoRepository;
 
 public class LoginUtils {
 
 	private static Logger logger = LogManager.getLogger(LoginUtils.class);
+
+	@Autowired
+	private UserInfoRepository urepo;
 
 	public static String getRandomSalt() {
 		String strRandom = UUID.randomUUID().toString().replace("-", "");
@@ -50,7 +56,6 @@ public class LoginUtils {
 		if ("".equals(Cty) || Cty == null) {
 			errorMsg.append("City is null").append("<br>");
 		}
-
 		if (errorMsg.length() > 0) {
 			logger.error("errorMsg>>" + errorMsg);
 			return false + "~" + errorMsg.toString();

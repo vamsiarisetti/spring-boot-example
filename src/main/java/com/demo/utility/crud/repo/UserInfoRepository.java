@@ -8,4 +8,6 @@ import com.demo.model.UserInfo;
 @Repository
 public interface UserInfoRepository extends CrudRepository<UserInfo, Long>{
 	UserInfo findByUsername(String username);
+	
+//	UserInfo saveUpdate(UserInfo userinfo);
 }
