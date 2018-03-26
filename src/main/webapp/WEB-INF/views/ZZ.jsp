@@ -12,12 +12,19 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/bot/jquery.ui.chatbox.css">
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script type="text/javascript">
-	function sendMsg() {
-		var txt = document.getElementById("idTxt").value;
-		document.getElementById("getMsg").innerHTML = txt;
-		document.getElementById("idTxt").innerHTML = "";
-	}
+	$(document).ready(function() {
+		$('#getMsg:empty').remove();
+		$('#idUserMsg:empty').remove();
+		$("#idIconGo").click(function() {
+			$("#getMsg").append($("#idTxt").val() + "<br/>");
+			$("#idTxt").val("");
+
+		});
+	});
 </script>
 </head>
 <body>
@@ -57,7 +64,7 @@
 							</div>
 						</li>
 						<li>
-							<div id="getMsg"></div>
+							<div id="idUserMsg"><div class="left-chat"><img src="/resources/images/BuntyAvataar.png"style="border-radius: 50%;"><p id="getMsg"></p></div></div>
 						</li>
 					</ul>
 				</div>
@@ -68,7 +75,7 @@
 				<div class="text-bar">
 					<input type="text" placeholder="Write messege" id="idTxt"><a
 						href="#"><i class="fa fa-arrow-right" aria-hidden="true"
-						onclick="return sendMsg();"></i></a>
+						id="idIconGo"></i></a>
 				</div>
 			</div>
 		</div>
