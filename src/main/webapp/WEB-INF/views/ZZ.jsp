@@ -15,16 +15,32 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#getMsg:empty').remove();
-		$('#idUserMsg:empty').remove();
-		$("#idIconGo").click(function() {
-			$("#getMsg").append($("#idTxt").val() + "<br/>");
-			$("#idTxt").val("");
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+// 		$('#idIconGo').click(function() {
+	$(document).ready(function() {
+		$('#idIconGo').click(function() {
+			var txtMsg = $("#idTxt").val();
+			$('#getMsg').append(txtMsg + "<br/>");
+			//alert("?????"+txtMsg);
+
+			$.ajax({
+				type: "GET",
+				dataType: "text",
+				url: "http://localhost:8080/getBotResponse/"+txtMsg,
+				success: function(data) {
+					$('#getMsgResp').append(data + "<br/>");
+				},
+                error: function (msg, url, line) {
+                    //alert('error trapped in error: function(msg, url, line)');
+                    alert('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
+                }
+			});
+			$('#idTxt').val("");
 		});
 	});
+
 </script>
 </head>
 <body>
@@ -64,7 +80,11 @@
 							</div>
 						</li>
 						<li>
-							<div id="idUserMsg"><div class="left-chat"><img src="/resources/images/BuntyAvataar.png"style="border-radius: 50%;"><p id="getMsg"></p></div></div>
+							<div id="idUserMsg" class="left-chat"><img src="/resources/images/BuntyAvataar.png"
+									style="border-radius: 50%;"><p id="getMsg"></p></div>
+						</li>
+						<li>
+							<div id="idUserMsgResp"><p id="getMsgResp"></p></div>
 						</li>
 					</ul>
 				</div>
@@ -73,9 +93,10 @@
 		<div class="row border-chat">
 			<div class="col-md-12 col-sm-12 col-xs-12 third-section">
 				<div class="text-bar">
-					<input type="text" placeholder="Write messege" id="idTxt"><a
-						href="#"><i class="fa fa-arrow-right" aria-hidden="true"
-						id="idIconGo"></i></a>
+					<input type="text" placeholder="Write messege" id="idTxt">
+					<a href="#">
+						<i class="fa fa-arrow-right" aria-hidden="true" id="idIconGo" ></i>
+					</a>
 				</div>
 			</div>
 		</div>
