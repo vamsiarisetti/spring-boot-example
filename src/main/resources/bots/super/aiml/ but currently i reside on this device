@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml>
-<!-- File: learnf.aiml -->
+<!-- File:  but currently i reside on this device. -->
 <!-- Author: Vamsi Arisetti -->
 <!-- Last modified: May 01, 2018 -->
 <!--  -->
@@ -15,13 +15,7 @@
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 <!--  -->
 <!-- For more information see We will get our weebsite launched soon -->
-<category><pattern>WHAT IS BUNTY</pattern>
-<template>Your nick name</template>
-</category>
-<category><pattern>WHAT IS MY NICK NAME</pattern>
-<template>bunty</template>
-</category>
-<category><pattern>MY NAMEWHAT S NAME</pattern>
-<template>my name IS hat</template>
+<category><pattern>ADDRESS</pattern>
+<template>You can contact TeamAIBots</template>
 </category>
 </aiml>
