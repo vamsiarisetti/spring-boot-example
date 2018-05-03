@@ -45,9 +45,9 @@ public class BotUtility {
 			Bot bot = new Bot("super", resourcesPath);
 			Chat chatSession = new Chat(bot);
 			bot.brain.nodeStats();
-			String textLine = "";
+			String textLine = "your profile";
 
-			// getResonseFromBot(textLine, bot, chatSession);
+			 getResonseFromBot(textLine);
 
 		} catch (Exception e) {
 			e.printStackTrace();
