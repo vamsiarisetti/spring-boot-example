@@ -20,25 +20,29 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#idIconGo').click(function() {
-			var txtMsg = $("#idTxt").val();
-			var userInputDiv = "<li><div id=\"idUserMsg\" class=\"left-chat\"><img src=\"/resources/images/BuntyAvataar.png\" style=\"border-radius: 50%;\"><p id=\"getMsg\">"+txtMsg+"</p><span>2 min</span></div></li>";
-			$(".chat-section ul").append(userInputDiv + "<br/>");
-			
-			$.ajax({
-				type: "GET",
-				dataType: "text",
-				url: "http://localhost:8080/getBotResponse/"+txtMsg,
-				success: function(data) {
-					var responseDiv = "<li><div id=\"idUserMsgResp\" class=\"right-chat\"><img src=\"/resources/images/You.png\" style=\"border-radius: 50%;\"><p id=\"getMsgResp\">"+data+"</p><span>2 min</span></div></li>";
-					$(".chat-section ul").append(responseDiv + "<br/>");
-					// To scroll to the bottpm pf the div
-					document.getElementById('idchat').scrollTop = document.getElementById('idchat').scrollHeight;
-				},
-                error: function (msg, url, line) {
-                    alert('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
-                }
-			});
-			$('#idTxt').val("");
+			var txtMsg = $("#idTxt").val().trim();
+
+			// Calls AIML Only if message is not empty
+			if (txtMsg != null && txtMsg != "" && txtMsg != "undefined") {
+				var userInputDiv = "<li><div id=\"idUserMsg\" class=\"left-chat\"><img src=\"/resources/images/BuntyAvataar.png\" style=\"border-radius: 50%;\"><p id=\"getMsg\">"+txtMsg+"</p><span>2 min</span></div></li>";
+				$(".chat-section ul").append(userInputDiv + "<br/>");
+				$.ajax({
+					type: "GET",
+					dataType: "text",
+					url: "http://localhost:8080/getBotResponse/"+txtMsg,
+					success: function(data) {
+						var responseDiv = "<li><div id=\"idUserMsgResp\" class=\"right-chat\"><img src=\"/resources/images/You.png\" style=\"border-radius: 50%;\"><p id=\"getMsgResp\">"+data+"</p><span>2 min</span></div></li>";
+						$(".chat-section ul").append(responseDiv + "<br/>");
+						// To scroll to the bottpm pf the div
+						document.getElementById('idchat').scrollTop = document.getElementById('idchat').scrollHeight;
+					},
+	                error: function (msg, url, line) {
+	                    alert('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
+	                }
+				});
+				$('#idTxt').val("");
+			}
+
 		});
 
 		var input = document.getElementById("idTxt");
