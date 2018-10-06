@@ -4,6 +4,10 @@ import java.io.File;
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.MagicBooleans;
  
+/**
+ * @author vamsi
+ *
+ */
 public class AddAiml {
  
     private static final boolean TRACE_MODE = false;
